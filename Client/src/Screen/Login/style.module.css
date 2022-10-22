@@ -1,0 +1,105 @@
+.outer{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+}
+.rightpane{
+    background: url("../../assets/bgsu.jpg");
+    background-size: cover;
+    position: relative;
+
+}
+.inputGroup{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.loginStyle{
+    padding: 8vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 1rem;
+    align-items: center;
+    box-shadow: 0 15px 24px rgb(10 76 173 / 10%);
+    position: absolute;
+    left: -19%;
+    height: 60vh;
+    background-color: white;
+    top: 29%;
+}
+.leftpane{
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -8rem;
+}
+.formField{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+    height: 60px;
+}
+.formField label{
+    text-align: left;
+    margin-bottom: 6px;
+    color: grey;
+    font-size: 0.9rem;
+}
+.formInput {
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    padding: 0px 10px;
+    border: 1px solid silver;
+    transition: all 1.2s ease-in;
+  }
+  
+  .uncompleted {
+    width: 300px;
+    height: 40px;
+    border-radius: 5px;
+    padding: 0px 10px;
+    border: 1px solid red;
+    transition: all 1.2s ease-in;
+  }
+.formInput:focus,
+.uncompleted:focus {
+  outline: none;
+  line-height: 30px;
+  height: 40px;
+  border: 1px solid #1a73e8;
+  transition: all 0.5s ease-in;
+}
+.formField span{
+  height: 10px;
+  text-align: left;
+  margin-top: 5px;
+  width: fit-content;
+  font-size: 0.7rem;
+  color: red;
+  line-height: 10px;
+  padding: 2px 3px;
+  border-radius: 5px;
+  background-color: rgba(225, 0 , 0, 0.175);
+}
+.formButtons button:hover{
+    background-color: #004aaa;
+  }
+  .formButtons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .formButtons button{
+    background-color: #1a73e8;
+    padding: 10px 20px ;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease-in;
+    margin-top: 20px;
+  }
