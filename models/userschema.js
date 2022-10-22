@@ -1,5 +1,5 @@
 const  mongoose = require('mongoose');
-const { use } = require('../controllers/notes');
+const { use } = require('../controllers/jobs', '../controllers/users');
 
 const usersSchema = new mongoose.Schema({
     role: {
