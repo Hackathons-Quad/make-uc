@@ -5,13 +5,11 @@ const bookmarksSchema = new mongoose.Schema({
     email: {
         type: String,
         trim: true,
-        unique: true,
         required: true
     },
     jobId: {
         type: Number,
-        required: true,
-        unique:true
+        required: true
     } 
 });
 

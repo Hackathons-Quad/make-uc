@@ -61,23 +61,4 @@ route.post("/login", async (req, res) => {
   }
 });
 
-// To edit a note in the database
-// route.post("/edit", async (req, res) => {
-//   try {
-//     let date = new Date();
-//     const { title, description } = req.body.users;
-//     const user1 = await users.findOneAndUpdate(
-//       { _id: req.body.users._id },
-//       {
-//         title,
-//         description,
-//         date,
-//       }
-//     );
-//     res.json({ msg: "Note Edited successfully" });
-//   } catch (err) {
-//     res.json({ msg: "Error Updating the note" });
-//   }
-// });
-
 module.exports = route;
