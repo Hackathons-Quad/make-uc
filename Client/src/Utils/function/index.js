@@ -32,6 +32,38 @@ export const validate =(data,type) =>{
             delete errors.confirmPassword
         }
     }
+    else if(type === "createjob"){
+        if(!data.title.trim()){
+            errors.title="Title is required"
+        }
+        else{
+            delete errors.name
+        }
+        if(!data.description.trim()){
+            errors.description="Description is required"
+        }
+        else{
+            delete  errors.description
+        }
+        if(!data.stipend.trim()){
+            errors.stipend="Stipend is required"
+        }
+        else{
+            delete  errors.stipend
+        }
+        if(!data.location.trim()){
+            errors.location="Location is required"
+        }
+        else{
+            delete  errors.location
+        }
+        if(!data.duration.trim()){
+            errors.duration="Duration is required"
+        }
+        else{
+            delete  errors.duration
+        }
+    }
     return errors;
 
 }

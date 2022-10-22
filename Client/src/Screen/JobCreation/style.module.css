@@ -1,0 +1,216 @@
+.outercontainer{
+    background: url("../../assets/we-are-hiring-website-landing-page-design-vector-25124488.jpg");
+    height: 100vh;
+    width: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.container{
+    display: flex;
+    justify-content: right;
+    background-color:#DFF6FF;
+    min-height: 90vh;
+    align-items: center;
+    background-size: 80%;
+    background-repeat: no-repeat;
+   
+
+}
+.logo p{
+  font-size: 40px;
+  font-weight: 700;
+}
+.logo{
+  z-index: 1;
+  position: absolute !important;
+  color: #DFF6FF;
+  font-family:Arial, Helvetica, sans-serif;
+  top:19rem;
+  background-color:rgba(19, 44, 51,0.5);
+  padding: 10px;
+  left:22rem;
+  border-radius: 10px;
+  
+}
+.formContainer{
+    border: 1px solid #DFF6FF;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 50px;
+    margin: 50px;
+    border-radius: 10px;
+    height: -moz-fit-content;
+    height: fit-content;
+    right: 0%;
+    height: 95%;
+    width: 46vw;
+    margin: 0rem;
+    position: absolute;
+    background-color: #fff;
+    margin: 1rem;
+    box-shadow: 0 15px 24px rgb(10 76 173 / 10%);
+    flex-direction: column;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.header{
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: blue;
+}
+.formField{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+    height: 60px;
+}
+.formField label{
+    text-align: left;
+    margin-bottom: 6px;
+    color: grey;
+    font-size: 0.9rem;
+}
+.formInput {
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    padding: 0px 10px;
+    border: 1px solid silver;
+    transition: all 1.2s ease-in;
+  }
+  
+  .uncompleted {
+    width: 300px;
+    height: 40px;
+    border-radius: 5px;
+    padding: 0px 10px;
+    border: 1px solid red;
+    transition: all 1.2s ease-in;
+  }
+.formInput:focus,
+.uncompleted:focus {
+  outline: none;
+  line-height: 30px;
+  height: 40px;
+  border: 1px solid #1a73e8;
+  transition: all 0.5s ease-in;
+}
+.formField span{
+  height: 10px;
+  text-align: left;
+  margin-top: 5px;
+  width: fit-content;
+  font-size: 0.7rem;
+  color: red;
+  line-height: 10px;
+  padding: 2px 3px;
+  border-radius: 5px;
+  background-color: rgba(225, 0 , 0, 0.175);
+}
+.role{
+padding-left: 45px;
+text-align: center;
+padding-top: 35px;
+display: flex;
+padding-bottom: 0 !important;
+margin-bottom: 0  !important;
+
+}
+role label{
+  margin-left: 0;
+  padding-left: 0;
+}
+.role1{
+  padding-left: 15px;
+  font-size: 0.8rem !important;
+  
+}
+.role2{
+  padding-left: 15px;
+  font-size: 0.8rem !important;
+
+}
+.checkBoxContainer{
+  display: flex;
+  font-size: 0.85rem;
+  flex-direction: row !important;
+  align-items: center;
+  height: 20px !important;
+  text-align: center;
+}
+
+input[type="checkbox"]{
+  margin-left: 20px;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #1a73e8;
+  appearance: none;
+  border-radius: 5px;
+  transition: all 0.5s ease-in;
+}
+input[type="checkbox"]:checked{
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #1a73e8;
+  transition: all 0.5s ease-in;
+}
+input[type="checkbox"]:focus{
+  width: 18px;
+  height: 18px;
+  outline: none;
+  border: 2px solid #004aaa;
+}
+.formButtons{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.formButtons button{
+  background-color: #1a73e8;
+  padding: 10px 20px ;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease-in;
+}
+.formButtons button:hover{
+  background-color: #004aaa;
+}
+.formButtons a{
+  color: #1a73e8;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.2s ease-in;
+}
+.formButtons a:hover{
+   color: #004aaa;
+}
+.labelDesign{
+  display: flex;
+}
+.inputstyle{
+  margin-left: 0.4rem;
+}
+@media (max-width: 440px) {
+  .formContainer {
+    padding: 20px;
+    margin: 50px 20px;
+  }
+
+  .formContainer {
+    width: 90%;
+  }
+
+  .formInput {
+    width: 90%;
+  }
+
+  .uncompleted {
+    width: 90%;
+  }
+}
