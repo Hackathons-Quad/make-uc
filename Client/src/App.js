@@ -1,18 +1,12 @@
 import {BrowserRouter as Router, Routes,Route} from "react-router-dom";
 import React from "react"; 
-import Signup from "../src/Components/Signup/Signup";
-import Signup from "../src/Components/Error/Error";
+import SignUp from "./Screen/SignUp";
+import "./index.css"
 function App() {
   return (
-    <Router>
-    <>
-      
-      <Routes>
-      <Route path="/" element={<Signup/>}/>
-      <Route path="*" element={<Error/>}/>
-      </Routes>
-      </>
-      </Router>
+   <Router>
+    <Route exact path="/" component={SignUp}></Route>
+   </Router>
   );
 }
 
