@@ -7,9 +7,16 @@ const bookmarks = require("../models/bookmarkschema");
 // To register user in our system
 route.post("/register", async (req, res) => {
   try {
-    const user1 = await users.find({});
-    res.json(user1);
+    const newUser= new User({
+      role: req.body.role,
+      username: req.body.username,
+      password: req.body.password,
+      email: req.body.email,
+    }) ;
+
+    newUser.save();
   } catch (err) {
+
     res.json({ msg: "Error getting the users" });
   }
 });
@@ -17,6 +24,8 @@ route.post("/register", async (req, res) => {
 // To validate the user
 route.get("/validate/:email", async (req, res) => {
   mail = req.params.email;
+
+
   try {
     const user1 = await users.updateOne(
       { email: mail },
