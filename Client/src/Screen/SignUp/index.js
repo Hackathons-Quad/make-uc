@@ -14,7 +14,7 @@ const SignUp = () => {
         email: "",
         password: "",
         confirmPassword: "",
-        isAccepted: false
+        role:""
     });
     // for radio button of role
     const [value, setValue] = React.useState('temp');
@@ -37,12 +37,7 @@ const SignUp = () => {
     }, [data, touched])
 
     const changeHandler = event => {
-        if (event.target.name === "isAccepted") {
-            setData({ ...data, [event.target.name]: event.target.checked })
-        } else {
             setData({ ...data, [event.target.name]: event.target.value })
-        }
-        console.log(event.target.value)
     }
 
     const focusHandler = event => {
@@ -65,6 +60,8 @@ const SignUp = () => {
         }
     }
 
+    console.log("data",data)
+
     return (
         <>
         <div className={styles.logo}><p>Powering people,</p> <p> one part at a time! </p> </div>
@@ -77,11 +74,11 @@ const SignUp = () => {
                         <div className={styles.role}>
                         <label>Role :</label>
                         <div className={styles.role1}>
-                        <label> Temp <input type="radio" checked={value === 'Temp'} onChange={handleChangeTemp} /></label>
+                        <label> Temp <input type="radio" name = {"role"}  value={"Temp"} checked={data.role === 'Temp'} onChange={changeHandler} /></label>
 
                         </div>
                         <div className={styles.role1}>
-                        <label> Employer <input type="radio" checked={value === 'Emp'} onChange={handleChangeEmp} /></label>
+                        <label> Employer <input type="radio" name={"role"} value={"Emp"} checked={data.role === 'Emp'} onChange={changeHandler} /></label>
 
                         </div>
 
@@ -142,7 +139,7 @@ const SignUp = () => {
                     {errors.confirmPassword && touched.confirmPassword && <span>{errors.confirmPassword}</span>}
 
                 </div>
-                <div className={styles.formField}>
+                {/* <div className={styles.formField}>
                     <div className={styles.checkBoxContainer}>
                         <label>I accept terms of privacy policy</label>
                         <input
@@ -153,7 +150,7 @@ const SignUp = () => {
                             onFocus={focusHandler} />
                     </div>
                     {errors.isAccepted && touched.isAccepted && <span>{errors.isAccepted}</span>}
-                </div>
+                </div> */}
                 <div className={styles.formButtons}>
                     <Link to="/login">Login</Link>
                     <button type='submit'>Sign Up</button>
