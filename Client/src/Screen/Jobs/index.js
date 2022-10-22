@@ -1,22 +1,27 @@
 import React from 'react'
 import styles from './style.module.css';
+import { joblist } from '../../Utils/constants';
 const Jobs=()=> {
   return (
     <>
-      <div className={styles.jobContainer}>
-      
-      <div className={styles.employerName}>Emp 1</div>
-      <div className={styles.role}>Shopkeeper</div>
-      <div className={styles.details}>
-      <span className={styles.location}>Delhi</span>
-      <span>&nbsp;•&nbsp;</span>
-      <span className={styles.workinghrs}>7hrs</span>
-      <span>&nbsp;•&nbsp;</span>
-      <span className={styles.stipend}>20k</span>
-      </div>
-      
-      
-      </div>
+    {
+      joblist.map((item) => {
+        return  <div className={styles.jobContainer}>
+        <div className={styles.employerName}>{item.name}</div>
+        <div className={styles.role}>{item.role}</div>
+        <div className={styles.details}>
+        <span className={styles.location}>{item.location}</span>
+        <span>&nbsp;•&nbsp;</span>
+        <span className={styles.workinghrs}>{item.woringhrs}hrs</span>
+        <span>&nbsp;•&nbsp;</span>
+        <span className={styles.stipend}>{item.workinghrs}k</span>
+        </div>
+        
+        
+        </div>
+      })
+    }
+     
     </>
   )
 }
