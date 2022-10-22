@@ -14,7 +14,7 @@ const SignUp = () => {
         email: "",
         password: "",
         confirmPassword: "",
-        role:""
+        role:"Temp"
     });
     // for radio button of role
     const [value, setValue] = React.useState('temp');
@@ -55,7 +55,6 @@ const SignUp = () => {
                 email: true,
                 password: true,
                 confirmPassword: true,
-                isAccepted: true
             })
         }
     }
@@ -74,11 +73,11 @@ const SignUp = () => {
                         <div className={styles.role}>
                         <label>Role :</label>
                         <div className={styles.role1}>
-                        <label> Temp <input type="radio" name = {"role"}  value={"Temp"} checked={data.role === 'Temp'} onChange={changeHandler} /></label>
+                        <label className={styles.labelDesign}> Temp <input defaultChecked={data.role} className={styles.inputstyle} type="radio" name = {"role"}  value={"Temp"} checked={data.role === 'Temp'} onChange={changeHandler} /></label>
 
                         </div>
                         <div className={styles.role1}>
-                        <label> Employer <input type="radio" name={"role"} value={"Emp"} checked={data.role === 'Emp'} onChange={changeHandler} /></label>
+                        <label className={styles.labelDesign}> Employer <input className={styles.inputstyle} type="radio" name={"role"} value={"Emp"} checked={data.role === 'Emp'} onChange={changeHandler} /></label>
 
                         </div>
 
@@ -153,7 +152,7 @@ const SignUp = () => {
                 </div> */}
                 <div className={styles.formButtons}>
                     <Link to="/login">Login</Link>
-                    <button type='submit'>Sign Up</button>
+                    <button style={{opacity: !Object.keys(errors).length ? 1 : 0.4}} disabled={!Object.keys(errors).length ? false : true} type='submit'>Sign Up</button>
                 </div>
             </form>
             <ToastContainer />

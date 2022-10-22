@@ -24,11 +24,6 @@ export const validate =(data,type) =>{
         }else{
             delete errors.name
         }
-        if (data.isAccepted){
-            delete data.isAccepted
-        }else{
-            errors.isAccepted="Accept our requlation"
-        }
         if (!data.confirmPassword){
             errors.confirmPassword="Confirm the Password"
         }else if (data.confirmPassword!==data.password){

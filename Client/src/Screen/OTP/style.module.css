@@ -1,0 +1,78 @@
+.outer{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+}
+.rightpane{
+    background: url("../../assets/bgsu.jpg");
+    background-size: cover;
+    position: relative;
+
+}
+
+.inputStyle{
+    height: 5vh;
+    text-align: center;
+    /* display: flex; */
+    width: 4vw;
+    border-radius: 6px;
+    border: 1px solid #D4D4D7;
+    margin: 0 0.5vw;
+    outline: none;
+}
+.otpStyle{
+    padding: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 1rem;
+    align-items: center;
+    box-shadow: 0 15px 24px rgb(10 76 173 / 10%);
+    position: absolute;
+    left: -19%;
+    height: 35vh;
+    background-color: white;
+    top: 29%;
+}
+.inputGroup{
+    display: flex;
+    justify-content: space-between;
+}
+.otpText{
+    display: flex;
+    justify-content: space-between;
+    width: 73%;
+    font-size: 12px;
+    color:#3D5A80;
+    margin:1.5vh 0;
+}
+.otpLabel{
+    color:#6E6E7A;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:1.5vh 0;
+}
+.leftpane{
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -8rem;
+}
+@media only screen and (max-width: 600px){
+    .inputStyle{
+        height: 6vh;
+        width: 9vw;
+    }
+    .otpText{
+        flex-direction: column;
+        justify-content: inherit;
+        width: 100%;
+    }
+    .resendCode{
+        margin-top: 1vh;
+    }
+}
