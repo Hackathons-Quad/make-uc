@@ -4,11 +4,14 @@ import { joblist } from '../../Utils/constants';
 const Jobs=()=> {
   return (
     <>
+    <div className={styles.bg}>
     {
       joblist.map((item) => {
         return  <div className={styles.jobContainer}>
-        <div className={styles.employerName}>{item.name}</div>
+        <div className={styles.card}></div>
         <div className={styles.role}>{item.role}</div>
+        <div className={styles.employerName}>{item.name}</div>
+        
         <div className={styles.details}>
         <span className={styles.location}>{item.location}</span>
         <span>&nbsp;•&nbsp;</span>
@@ -21,7 +24,7 @@ const Jobs=()=> {
         </div>
       })
     }
-     
+    </div>
     </>
   )
 }
