@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 mongoose.connect(
-  process.env.DB_CONNECTION,
+    process.env.DB_CONNECTION,
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err) => {
     if (err) console.log(err);
@@ -29,14 +29,15 @@ app.use((req, res, next) => {
 });
 
 // Route to process the request related to notes
-// app.use("/notes", require("./controllers/notes"));
+app.use("/users", require("./controllers/users"));
+app.use("/jobs", require("./controllers/jobs"));
 
-// if(process.env.NODE_ENV === "production"){
-//     app.use(express.static(__dirname + "/Client/build"));
-//     app.get("*", (req, res) => {
-//         res.sendFile(path.join(__dirname+'/Client/build/index.html'));
-//     });
-// }
+if(process.env.NODE_ENV === "production"){
+    app.use(express.static(__dirname + "/Client/build"));
+    app.get("*", (req, res) => {
+        res.sendFile(path.join(__dirname+'/Client/build/index.html'));
+    });
+}
 
 app.listen(process.env.PORT || 8000, (err) => {
   if (err) {
