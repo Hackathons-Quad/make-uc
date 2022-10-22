@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./style.module.css";
 import { joblist } from '../../Utils/constants';
-const SavedList = (props) => {
+const SavedList = () => {
     return (
         <>
             <div className={styles.bg}>

@@ -38,12 +38,7 @@ export const validate =(data,type) =>{
         else{
             delete errors.name
         }
-        if(!data.description.trim()){
-            errors.description="Description is required"
-        }
-        else{
-            delete  errors.description
-        }
+
         if(!data.stipend.trim()){
             errors.stipend="Stipend is required"
         }
