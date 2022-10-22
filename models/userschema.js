@@ -23,7 +23,8 @@ const usersSchema = new mongoose.Schema({
     },
     isAuthenticated: {
         type: Boolean,
-        required: true
+        required: true,
+        default:"false"
     }
 });
 
