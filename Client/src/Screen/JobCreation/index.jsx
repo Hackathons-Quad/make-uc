@@ -10,7 +10,6 @@ const JobCreation = () => {
 
     const [data, setData] = useState({
         title: "",
-        description: "",
         stipend: "",
         duration: "",
         location: "",
@@ -68,19 +67,7 @@ const JobCreation = () => {
                         onFocus={focusHandler} />
                     {errors.title && touched.title && <span>{errors.title}</span>}
                 </div>
-                <div className={styles.formField}>
-                    <label>Description</label>
-                    <input
-                        className={(errors.description && touched.description) ?
-                            styles.uncompleted :
-                            styles.formInput}
-                        type="text"
-                        name="description"
-                        value={data.description}
-                        onChange={changeHandler}
-                        onFocus={focusHandler} />
-                    {errors.description && touched.description && <span>{errors.description}</span>}
-                </div>
+                
                 
                 <div className={styles.formField}>
                     <label>Stipend</label>

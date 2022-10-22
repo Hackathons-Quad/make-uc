@@ -3,14 +3,24 @@ const route = express.Router();
 const users = require("../models/userschema");
 const jobs = require("../models/jobschema");
 const bookmarks = require("../models/bookmarkschema");
-
+var jid=1;
 // To add job
 route.post("/add", async (req, res) => {
+
   try {
-    const user1 = await users.find({});
-    res.json(user1);
+    const newJob=new jobs({
+      jobId:jid,
+      jobDescription:req.body.jobTitle,
+      email:req.body.email,
+      stipend:req.body.stipend,
+      duration:req.body.duration,
+      location:req.body.location
+    })
+    jid++;
+    newJob.save();
+    res.json({ msg: "Added job successfully!" });
   } catch (err) {
-    res.json({ msg: "Error getting the users" });
+    res.json({ msg: "Error adding the job" });
   }
 });
 
