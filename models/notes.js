@@ -37,10 +37,6 @@ const usersSchema = new mongoose.Schema({
         },
         required: true
     },
-    bodyOfMail: {
-        type: String,
-        required: true
-    },
     isAuthenticated: {
         type: Boolean,
         required: true,
