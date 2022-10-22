@@ -16,16 +16,7 @@ const SignUp = () => {
         confirmPassword: "",
         role:"Temp"
     });
-    // for radio button of role
-    const [value, setValue] = React.useState('temp');
 
-
-    const handleChangeTemp = () => {
-        setValue('Temp');
-    };
-    const handleChangeEmp = () => {
-        setValue('Emp');
-    };
 
 
     const [errors, setErrors] = useState({});
@@ -47,7 +38,7 @@ const SignUp = () => {
     const submitHandler = event => {
         event.preventDefault();
         if (!Object.keys(errors).length) {
-            notify("You Signed in succussfuly!", "success")
+            notify("You Signed in successfuly!", "success")
         } else {
             notify("Oops,Unable to SignUp!", "error")
             setTouched({
