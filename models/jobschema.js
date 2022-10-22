@@ -12,7 +12,7 @@ const jobsSchema = new mongoose.Schema({
         type: String,
         default: ""
     },
-    eemail: {
+    email: {
         type: String,
         trim: true,
         unique: true,

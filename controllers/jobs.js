@@ -4,8 +4,8 @@ const users = require("../models/userschema");
 const jobs = require("../models/jobschema");
 const bookmarks = require("../models/bookmarkschema");
 
-// To add jobId to wish list
-route.post("/bookmark", async (req, res) => {
+// To add job
+route.post("/add", async (req, res) => {
   try {
     const user1 = await users.find({});
     res.json(user1);
@@ -14,11 +14,21 @@ route.post("/bookmark", async (req, res) => {
   }
 });
 
+// To get all jobs
+route.get("/", async (req, res) => {
+    try {
+        const notes1 = await jobs.find({});
+        res.json(notes1);
+      } catch (err) {
+        res.json({msg: "Error getting jobs"})
+      }
+});
+
 // To delete a note from the database
 route.put("/delete", async (req, res) => {
   try {
     jobid = req.body.jobId;
-    const job = await users.find({ jobId: jobid });
+    const job = await jobs.find({ jobId: jobid });
     if (job.length === 0) {
       res.json({ msg: "Invalid Job Id" });
     }
@@ -29,21 +39,25 @@ route.put("/delete", async (req, res) => {
   }
 });
 
-// To add a new note to the database
-route.post("/add", async (req, res) => {
-  let date = new Date();
-  const user1 = new users({
-    title: req.body.title,
-    description: req.body.description,
-    date: date,
-  });
 
-  try {
-    const note11 = await user1.save();
-    res.json(note11);
-  } catch (err) {
-    res.json({ msg: err.message });
-  }
+// To add job to the wishlist
+route.post("/bookmark", async (req, res) => {
+    try {
+        const notes1 = await jobs.find({});
+        res.json(notes1);
+      } catch (err) {
+        res.json({msg: "Error getting jobs"})
+      }
+});
+
+// To get job wishlist
+route.get("/bookmark", async (req, res) => {
+    try {
+        const notes1 = await jobs.find({});
+        res.json(notes1);
+      } catch (err) {
+        res.json({msg: "Error getting jobs"})
+      }
 });
 
 // // To edit a note in the database
