@@ -7,15 +7,22 @@ const bookmarks = require("../models/bookmarkschema");
 // To register user in our system
 route.post("/register", async (req, res) => {
   try {
-    const newUser= new User({
+    const newUser= new users({
       role: req.body.role,
       username: req.body.username,
       password: req.body.password,
-      email: req.body.email,
+      email: req.body.email
     }) ;
-    newUser.save();
+    let email=req.body.email;
+    const user1 = await users.find({ email: email });
+    console.log(user1);
+    if (user1.length === 0) {
+      newUser.save();
+      res.json({msg: "User registered Successfully "})
+    }else
+      res.json({msg:"Email already registered, use another email"})
   } catch (err) {
-    res.json({ msg: "Error getting the users" });
+    res.json({ msg: "Unable to register new user" });
   }
 });
 

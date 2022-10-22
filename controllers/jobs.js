@@ -24,7 +24,7 @@ route.get("/", async (req, res) => {
       }
 });
 
-// To delete a note from the database
+// To delete a job from the database
 route.put("/delete", async (req, res) => {
   try {
     jobid = req.body.jobId;

@@ -19,7 +19,7 @@
 }
 .card{
     background-image: linear-gradient(to right top, #16b5c7, #1bc6d4, #26d8e0, #34eaea, #44fcf4);
-    height: 10rem;
+    height: 8rem;
     border-radius: 10px;
     width: 15rem;
     padding: 3rem;
@@ -52,20 +52,34 @@
   }
 
 .details{
-    padding: 5px;
+    padding:20px 5px;
     color: hsl(180, 8%, 52%);
 }
 .list{
-    padding: 10px;
+    padding: 10px 20px;
     border-style: none;
-    border-radius: 50%;
+    border-radius: 10px;
     background-image: linear-gradient(to right top, #16b5c7, #1bc6d4, #26d8e0, #34eaea, #44fcf4);
 
     float: right;
-    width: 3rem;
+    width: fit-content;
     height: 3rem;
     color: white;
     
+}
+.remove{
+    padding: 10px 20px;
+    border-style: none;
+    border-radius: 10px;
+    background-image: linear-gradient(to right top, #b8060a, #c62225, #d3353c, #df4753, #e95969);
+
+    float: left;
+    width: fit-content;
+    height: 3rem;
+    color: white;
+}
+.remove:hover{
+    background-image: linear-gradient(to right top, #610204, #64070e, #680c14, #6b111a, #6e1620);
 }
 .list:hover{
     background-image: linear-gradient(to right top, #4c16c7, #453ad7, #3f54e6, #3e6bf2, #4480fc);
