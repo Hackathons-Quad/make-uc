@@ -53,8 +53,12 @@ route.put("/delete", async (req, res) => {
 // To add job to the wishlist
 route.post("/bookmark", async (req, res) => {
     try {
-        const notes1 = await jobs.find({});
-        res.json(notes1);
+        const newBookmark= new bookmarks({
+            email: req.body.email,
+            jobId: req.body.jobId
+          }) ;
+          newBookmark.save();
+          res.json({msg: "Successfully fetched jobs from DB"});
       } catch (err) {
         res.json({msg: "Error getting jobs"})
       }
@@ -63,51 +67,24 @@ route.post("/bookmark", async (req, res) => {
 // To get job wishlist
 route.get("/bookmark", async (req, res) => {
     try {
-        const notes1 = await jobs.find({});
-        res.json(notes1);
+        email = req.body.email;
+        const allBookmarks = await bookmarks.find({email : email});
+        res.json(allBookmarks);
       } catch (err) {
-        res.json({msg: "Error getting jobs"})
+        res.json({msg: "Error getting bookmarks"})
       }
 });
 
-// // To edit a note in the database
-// route.post("/edit", async (req, res) => {
-//   try {
-//     let date = new Date();
-//     const { title, description } = req.body.users;
-//     const user1 = await users.findOneAndUpdate(
-//       { _id: req.body.users._id },
-//       {
-//         title,
-//         description,
-//         date
-//       }
-//     );
-//     res.json({ msg: "Note Edited successfully" });
-//   } catch (err) {
-//     res.json({ msg: "Error Updating the note" });
-//   }
-// });
-
-// // To delete a note from the database
-// route.post("/delete", async (req, res) => {
-//   try {
-//     const user1 = await users.findById(req.body.id);
-//     user1.remove();
-//     res.json({ msg: "Note deleted successfully" });
-//   } catch (err) {
-//     res.json({ msg: "Error Deleting the note" });
-//   }
-// });
-
-// // To get particular note from the database
-// route.get("/:id", async (req, res) => {
-//     try {
-//       const user1 = await users.findById(req.params.id);
-//       res.json(user1);
-//     } catch (err) {
-//       res.json({msg: "Error getting the note"})
-//     }
-//   });
+// To delete job from wishlist
+route.put("/bookmark", async (req, res) => {
+    try {
+        mail = req.body.email;
+        jobid = req.body.jobId;
+        const bookmark = await bookmarks.find({ jobId: jobid, email : mail });
+        bookmark[0].remove();
+      } catch (err) {
+        res.json({msg: "Error deleting job from bookmark list"})
+      }
+});
 
 module.exports = route;
