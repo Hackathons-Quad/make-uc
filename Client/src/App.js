@@ -5,7 +5,10 @@ import "./index.css"
 function App() {
   return (
    <Router>
-    <Route exact path="/" component={SignUp}></Route>
+   <Route exact path="/">
+          <Redirect to="/signup" />
+        </Route>
+    <Route exact path="/signup" component={SignUp}></Route>
    </Router>
   );
 }
