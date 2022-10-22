@@ -13,10 +13,8 @@ route.post("/register", async (req, res) => {
       password: req.body.password,
       email: req.body.email,
     }) ;
-
     newUser.save();
   } catch (err) {
-
     res.json({ msg: "Error getting the users" });
   }
 });
@@ -74,7 +72,5 @@ route.post("/login", async (req, res) => {
 //     res.json({ msg: "Error Updating the note" });
 //   }
 // });
-
-
 
 module.exports = route;
