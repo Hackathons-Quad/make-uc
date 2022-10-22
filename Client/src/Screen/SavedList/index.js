@@ -1,13 +1,14 @@
-import React from 'react'
-import styles from './style.module.css';
+import React from "react";
+import styles from "./style.module.css";
 import { joblist } from '../../Utils/constants';
-const Jobs=()=> {
-  return (
-    <>
-    <div className={styles.bg}>
+const SavedList = (props) => {
+    return (
+        <>
+            <div className={styles.bg}>
     {
       joblist.map((item) => {
         return  <div className={styles.jobContainer}>
+        
         <div className={styles.card}></div>
         <div className={styles.role}>{item.role}</div>
         <div className={styles.employerName}>{item.name}</div>
@@ -19,15 +20,17 @@ const Jobs=()=> {
         <span>&nbsp;•&nbsp;</span>
         <span className={styles.stipend}>{item.workinghrs}k</span>
         </div>
-        <button className={styles.list}>Add</button>
+        <button className={styles.list}>Apply</button>
+        <button className={styles.remove}>Remove</button>
         
         
         </div>
       })
     }
     </div>
-    </>
-  )
-}
 
-export default Jobs
+        </>
+    )
+};
+
+export default SavedList;
