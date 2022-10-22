@@ -1,22 +1,27 @@
 const express = require("express");
 const route = express.Router();
-const notes = require("../models/notes");
+const users = require("../models/userschema");
+const jobs = require("../models/jobschema.js");
+const feedbacks = require("../models/feedbackschema");
+const bookmarks = require("../models/bookmarkschema");
 
-// To get all notes from the database
+
+
+// To get all users from the database
 route.get("/", async (req, res) => {
   try {
-    const notes1 = await notes.find({});
-    res.json(notes1);
+    const user1 = await users.find({});
+    res.json(user1);
   } catch (err) {
-    res.json({msg: "Error getting the notes"})
+    res.json({msg: "Error getting the users"})
   }
 });
 
 // To get particular note from the database
 route.get("/:id", async (req, res) => {
   try {
-    const notes1 = await notes.findById(req.params.id);
-    res.json(notes1);
+    const user1 = await users.findById(req.params.id);
+    res.json(user1);
   } catch (err) {
     res.json({msg: "Error getting the note"})
   }
@@ -25,14 +30,14 @@ route.get("/:id", async (req, res) => {
 // To add a new note to the database
 route.post("/add", async (req, res) => {
     let date = new Date();
-  const notes1 = new notes({
+  const user1 = new users({
     title: req.body.title,
     description: req.body.description,
     date: date
   });
 
   try {
-    const note11 = await notes1.save();
+    const note11 = await user1.save();
     res.json(note11);
   } catch (err) {
     res.json({ msg:err.message });
@@ -43,9 +48,9 @@ route.post("/add", async (req, res) => {
 route.post("/edit", async (req, res) => {
   try {
     let date = new Date();
-    const { title, description } = req.body.notes;
-    const notes1 = await notes.findOneAndUpdate(
-      { _id: req.body.notes._id },
+    const { title, description } = req.body.users;
+    const user1 = await users.findOneAndUpdate(
+      { _id: req.body.users._id },
       {
         title,
         description,
@@ -61,8 +66,8 @@ route.post("/edit", async (req, res) => {
 // To delete a note from the database
 route.post("/delete", async (req, res) => {
   try {
-    const notes1 = await notes.findById(req.body.id);
-    notes1.remove();
+    const user1 = await users.findById(req.body.id);
+    user1.remove();
     res.json({ msg: "Note deleted successfully" });
   } catch (err) {
     res.json({ msg: "Error Deleting the note" });

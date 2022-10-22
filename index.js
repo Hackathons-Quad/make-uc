@@ -29,14 +29,14 @@ app.use((req, res, next) => {
 });
 
 // Route to process the request related to notes
-app.use("/notes", require("./controllers/notes"));
+// app.use("/notes", require("./controllers/notes"));
 
-if(process.env.NODE_ENV === "production"){
-    app.use(express.static(__dirname + "/Client/build"));
-    app.get("*", (req, res) => {
-        res.sendFile(path.join(__dirname+'/Client/build/index.html'));
-    });
-}
+// if(process.env.NODE_ENV === "production"){
+//     app.use(express.static(__dirname + "/Client/build"));
+//     app.get("*", (req, res) => {
+//         res.sendFile(path.join(__dirname+'/Client/build/index.html'));
+//     });
+// }
 
 app.listen(process.env.PORT || 8000, (err) => {
   if (err) {
