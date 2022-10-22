@@ -1,14 +1,14 @@
 const express = require("express");
 const route = express.Router();
 const users = require("../models/userschema");
-const jobs = require("../models/jobschema.js");
+const jobs = require("../models/jobschema");
 const feedbacks = require("../models/feedbackschema");
 const bookmarks = require("../models/bookmarkschema");
 
 
 
-// To get all users from the database
-route.get("/", async (req, res) => {
+// To register user in our system
+route.post("/register", async (req, res) => {
   try {
     const user1 = await users.find({});
     res.json(user1);
