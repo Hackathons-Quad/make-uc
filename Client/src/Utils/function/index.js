@@ -1,7 +1,6 @@
 import {toast} from "react-toastify";
 export const validate =(data,type) =>{
     const errors={};
-   
     if (!data.email){
         errors.email="Email is required"
     }else if(!/\S+@\S+\.\S+/.test(data.email)){
@@ -64,6 +63,7 @@ export const validate =(data,type) =>{
 
 
 export const notify = (text,type)=>{
+    console.log("type",type)
     if (type==="success"){
         toast.success(text);
     }else {

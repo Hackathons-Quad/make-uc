@@ -2,12 +2,11 @@ import styles from "./style.module.css"
 import React, { useState, useEffect } from 'react';
 import { validate } from "../../Utils/function";
 import { notify } from "../../Utils/function";
-
-
-
+import { postJobs } from "../../Utils/api";
+import { useNavigate } from 'react-router-dom';
 
 const JobCreation = () => {
-
+    const navigate = useNavigate();
     const [data, setData] = useState({
         title: "",
         stipend: "",
@@ -31,19 +30,24 @@ const JobCreation = () => {
         setTouched({ ...touched, [event.target.name]: true })
     }
 
-    const submitHandler = event => {
+    const submitHandler =  async (event) => {
         event.preventDefault();
-        if (!Object.keys(errors).length) {
-            notify("You Signed in successfuly!", "success")
-        } else {
-            notify("Oops,Unable to SignUp!", "error")
-            setTouched({
-                name: true,
-                email: true,
-                password: true,
-                confirmPassword: true,
-            })
-        }
+        console.log("kjlnjk") 
+            const responsedata = await postJobs(data)  
+            console.log("responsedata",responsedata)  
+            if(responsedata.msg === "Added job successfully!"){
+                notify("Job Created successfuly!", "success")
+                navigate("/jobs")  
+            }
+            else {
+                    notify("Oops,Unable to Create!", "error")
+                    setTouched({
+                        name: true,
+                        email: true,
+                        password: true,
+                        confirmPassword: true,
+                    })
+                }
     }
 
     console.log("data",data)
