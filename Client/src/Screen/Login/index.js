@@ -2,7 +2,12 @@ import styles from './style.module.css';
 import { validate } from '../../Utils/function';
 import { notify } from '../../Utils/function';
 import { useState, useEffect } from 'react';
+import { postLogindata } from '../../Utils/api';
+import { ToastContainer } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+
 const Login = () => {
+    const navigate = useNavigate();
     const [data, setData] = useState({
         email: "",
         password: ""
@@ -23,10 +28,19 @@ const Login = () => {
         setTouched({ ...touched, [event.target.name]: true })
     }
 
-    const submitHandler = event => {
+    const submitHandler = async (event) => {
         event.preventDefault();
         if (!Object.keys(errors).length) {
+            const result= await postLogindata(data)
+            console.log("result",result)
+            if(result.isAuthenticated === true){
             notify("You Logged in successfuly!", "success")
+            sessionStorage.setItem(
+                "email",
+                JSON.stringify(result.email)
+              );
+            navigate("/jobs")
+            }
         } else {
             notify("Oops,Unable to Log In!", "error")
             setTouched({
@@ -46,6 +60,7 @@ const Login = () => {
             </div>
             <div className={styles.rightpane}>
                 <div className={styles.loginStyle}>
+                <form onSubmit={submitHandler} className={styles.formContainer} >
                     <div style={{ fontWeight: "bold", fontSize: 28, marginBottom: 75 }}>Login</div>
                     <div className={styles.inputGroup}>
                         <div className={styles.formField}>
@@ -80,6 +95,8 @@ const Login = () => {
         
                     <button style={{opacity: !Object.keys(errors).length ? 1 : 0.4}} disabled={!Object.keys(errors).length ? false : true} type='submit'>Login</button>
                 </div>
+                </form>
+                <ToastContainer />
                 </div>
             </div>
 
