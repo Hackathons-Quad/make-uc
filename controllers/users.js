@@ -49,14 +49,20 @@ route.post("/login", async (req, res) => {
   try {
     const user1 = await users.find({ email: mail });
     if (user1.length === 0) {
-      res.send("Invalid User");
+        res.json({msg: "Invalid User"})
     } else {
-      if (password == user1[0].password) res.json(user1[0]);
-      else res.send("Pls enter correct Password");
+      if (password == user1[0].password) {
+        ourUser = user1[0];
+        temp = {role: ourUser.role, username: ourUser.username, password : ourUser.password, email : ourUser.email};
+        Object.assign(temp, {msg: "Success"});
+        console.log(temp);
+        res.json(temp);
+      }
+      else res.josn({msg : "Pls enter correct Password"});
     }
   } catch (err) {
     console.log(err);
-    res.send("Error logging in");
+    res.josn({msg : "Error logging in"});
   }
 });
 
