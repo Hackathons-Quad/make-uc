@@ -1,0 +1,53 @@
+.navbar {
+    height: 5rem;
+    background-color: aliceblue;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.logo {
+    font-weight: 700;
+    color: black;
+    font-size: 1.5rem;
+
+
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: rgb(91, 164, 164);
+    font-weight: 500;
+}
+
+li button {
+    font-size: 1rem;
+    border: none;
+    background-color: aliceblue;
+    padding: 8px;
+    margin: 0;
+}
+
+.create {
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+li {
+    list-style: none;
+    padding: 10px;
+}
+
+.navlinks {
+    float: right;
+    display: flex;
+    gap: 1em;
+    font-size: 18px;
+}

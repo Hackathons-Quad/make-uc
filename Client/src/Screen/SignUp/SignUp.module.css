@@ -2,10 +2,12 @@
     display: flex;
     justify-content: right;
     background-color:#DFF6FF;
-    min-height: 90vh;
+    
+    min-height: 100vh;
     align-items: center;
     background-image: url(../../assets/bgsu.jpg);
     background-size: 80%;
+    font-family: 'Poppins', sans-serif;
     background-repeat: no-repeat;
    
 
@@ -18,11 +20,11 @@
   z-index: 1;
   position: absolute !important;
   color: #DFF6FF;
-  font-family:Arial, Helvetica, sans-serif;
-  top:19rem;
+  font-family: 'Poppins', sans-serif;
+  top:18rem;
   background-color:rgba(19, 44, 51,0.5);
   padding: 10px;
-  left:22rem;
+  left:20rem;
   border-radius: 10px;
   
 }
