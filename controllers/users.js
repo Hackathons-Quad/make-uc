@@ -39,6 +39,9 @@ route.post("/register", async (req, res) => {
 //   }
 // });
 
+
+
+
 // To login in the user into our system
 route.post("/login", async (req, res) => {
   mail = req.body.email;

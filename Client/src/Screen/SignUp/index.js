@@ -2,13 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
-
 import styles from "./SignUp.module.css";
 
 import { validate } from '../../Utils/function';
 import { notify } from '../../Utils/function';
+import { postsignupdata } from '../../Utils/api';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const SignUp = () => {
+    const navigate = useNavigate();
     const [data, setData] = useState({
         name: "",
         email: "",
@@ -35,10 +39,16 @@ const SignUp = () => {
         setTouched({ ...touched, [event.target.name]: true })
     }
 
-    const submitHandler = event => {
+    const submitHandler = async (event) => {
         event.preventDefault();
         if (!Object.keys(errors).length) {
-            notify("You Signed in successfuly!", "success")
+             const message = await postsignupdata(data)
+             console.log("message",message.msg)
+             if(message.msg === "User registered Successfully ") {
+                notify("You Signed in successfuly!", "success")
+                navigate("/login")  
+                // setData({ name: "",email: "",password: "",confirmPassword: "",role:"Temp"})
+             }
         } else {
             notify("Oops,Unable to SignUp!", "error")
             setTouched({

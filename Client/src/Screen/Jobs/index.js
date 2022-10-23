@@ -1,23 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './style.module.css';
 import { joblist } from '../../Utils/constants';
+import { getAllJobs } from '../../Utils/api';
+
 const Jobs=()=> {
+
+const [jobarray,setjobarray] = useState([])  
+
+useEffect(async() => {
+  const joblistArray = await getAllJobs()
+  console.log("joblistArray",joblistArray)
+  setjobarray(joblistArray)
+},[])  
   return (
     <>
     <div className={styles.bg}>
     {
-      joblist.map((item) => {
-        return  <div className={styles.jobContainer}>
+      jobarray.map((item) => {
+        return  <div id = {item.jobId} className={styles.jobContainer}>
         <div className={styles.card}></div>
-        <div className={styles.role}>{item.role}</div>
-        <div className={styles.employerName}>{item.name}</div>
+        <div className={styles.role}>{item.jobDescription}</div>
+        <div className={styles.employerName}>{item.email}</div>
         
         <div className={styles.details}>
         <span className={styles.location}>{item.location}</span>
         <span>&nbsp;•&nbsp;</span>
-        <span className={styles.workinghrs}>{item.woringhrs}hrs</span>
+        <span className={styles.workinghrs}>{item.duration}hrs</span>
         <span>&nbsp;•&nbsp;</span>
-        <span className={styles.stipend}>{item.workinghrs}k</span>
+        <span className={styles.stipend}>{item.stipend}k</span>
         </div>
         <button className={styles.list}>Add</button>
         
