@@ -5,6 +5,7 @@ import Otp from "./Screen/OTP";
 import "./index.css"
 import Login from "./Screen/Login";
 import Jobs from "./Screen/Jobs";
+import SavedList from "./Screen/SavedList";
 
 import JobCreation from "./Screen/JobCreation";
 
@@ -20,6 +21,7 @@ function App() {
     <Route exact path="/jobs" component={Jobs}></Route>
 
     <Route exact path="/createnewjob" component={JobCreation}></Route>
+    <Route exact path="/savedlist" component={SavedList}></Route>
 
    </Router>
   );
