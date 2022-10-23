@@ -27,20 +27,18 @@ route.post("/register", async (req, res) => {
 });
 
 // To validate the user
-route.get("/validate/:email", async (req, res) => {
-  mail = req.params.email;
-
-
-  try {
-    const user1 = await users.updateOne(
-      { email: mail },
-      { $set: { isAuthenticated: true } }
-    );
-    res.send("user authenticated");
-  } catch (err) {
-    res.send("Error occured while authenticating the user");
-  }
-});
+// route.get("/validate/:email", async (req, res) => {
+//   mail = req.params.email;
+//   try {
+//     const user1 = await users.updateOne(
+//       { email: mail },
+//       { $set: { isAuthenticated: true } }
+//     );
+//     res.send("user authenticated");
+//   } catch (err) {
+//     res.send("Error occured while authenticating the user");
+//   }
+// });
 
 // To login in the user into our system
 route.post("/login", async (req, res) => {

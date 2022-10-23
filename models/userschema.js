@@ -20,11 +20,6 @@ const usersSchema = new mongoose.Schema({
         trim: true,
         unique: true,
         required: true
-    },
-    isAuthenticated: {
-        type: Boolean,
-        required: true,
-        default:"false"
     }
 });
 

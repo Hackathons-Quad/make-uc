@@ -19,12 +19,12 @@ const jobsSchema = new mongoose.Schema({
         required: true
     },
     stipend: {
-        type: Number,
+        type: String,
         required: true,
         default: ""
     },
     duration: {
-        type: Number,
+        type: String,
         required: true
     },
     location: {
