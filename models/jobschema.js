@@ -15,16 +15,15 @@ const jobsSchema = new mongoose.Schema({
     email: {
         type: String,
         trim: true,
-        unique: true,
         required: true
     },
     stipend: {
-        type: Number,
+        type: String,
         required: true,
         default: ""
     },
     duration: {
-        type: Number,
+        type: String,
         required: true
     },
     location: {

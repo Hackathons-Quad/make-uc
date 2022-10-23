@@ -53,14 +53,19 @@ route.put("/delete", async (req, res) => {
 // To add job to the wishlist
 route.post("/bookmark", async (req, res) => {
     try {
+        mail = req.body.email;
+        jobid = req.body.jobId;
         const newBookmark= new bookmarks({
-            email: req.body.email,
-            jobId: req.body.jobId
+            email: mail,
+            jobId: jobid
           }) ;
+          const bookmark = await bookmarks.find({ jobId: jobid, email : mail });
+          if(bookmark.length >= 1)
+             res.json({msg: "All ready wishlisted"});
           newBookmark.save();
-          res.json({msg: "Successfully fetched jobs from DB"});
+          res.json({msg: "Successfully added jobs in wishlist"});
       } catch (err) {
-        res.json({msg: "Error getting jobs"})
+        res.json({msg: "Error getting jobs"});
       }
 });
 
@@ -71,7 +76,7 @@ route.get("/bookmark", async (req, res) => {
         const allBookmarks = await bookmarks.find({email : email});
         res.json(allBookmarks);
       } catch (err) {
-        res.json({msg: "Error getting bookmarks"})
+        res.json({msg: "Error getting bookmarks"});
       }
 });
 
@@ -81,9 +86,11 @@ route.put("/bookmark", async (req, res) => {
         mail = req.body.email;
         jobid = req.body.jobId;
         const bookmark = await bookmarks.find({ jobId: jobid, email : mail });
+        console.log(bookmark);
         bookmark[0].remove();
+        res.json({msg: "Successfully deleted job from wishlist"});
       } catch (err) {
-        res.json({msg: "Error deleting job from bookmark list"})
+        res.json({msg: "Error deleting job from bookmark list"});
       }
 });
 

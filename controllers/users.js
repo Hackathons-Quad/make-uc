@@ -15,7 +15,6 @@ route.post("/register", async (req, res) => {
     }) ;
     let email=req.body.email;
     const user1 = await users.find({ email: email });
-    console.log(user1);
     if (user1.length === 0) {
       newUser.save();
       res.json({msg: "User registered Successfully "})
@@ -29,8 +28,6 @@ route.post("/register", async (req, res) => {
 // To validate the user
 // route.get("/validate/:email", async (req, res) => {
 //   mail = req.params.email;
-
-
 //   try {
 //     const user1 = await users.updateOne(
 //       { email: mail },
@@ -42,20 +39,6 @@ route.post("/register", async (req, res) => {
 //   }
 // });
 
-route.get("/validate/:email", async (req, res) => {
-  mail = req.params.email;
-
-
-  try {
-    const user1 = await users.updateOne(
-      { email: mail },
-      { $set: { isAuthenticated: true } }
-    );
-    res.send("user authenticated");
-  } catch (err) {
-    res.send("Error occured while authenticating the user");
-  }
-});
 
 
 
@@ -65,18 +48,11 @@ route.post("/login", async (req, res) => {
   password = req.body.password;
   try {
     const user1 = await users.find({ email: mail });
-    console.log(user1);
     if (user1.length === 0) {
       res.send("Invalid User");
     } else {
-      if (password == user1[0].password) {
-      res.json(user1[0]);
-      const user1 = await users.updateOne(
-        { email: mail },
-        { $set: { isAuthenticated: true } }
-      );
-      }
-      else res.send("Invalid User");
+      if (password == user1[0].password) res.json(user1[0]);
+      else res.send("Pls enter correct Password");
     }
   } catch (err) {
     console.log(err);
