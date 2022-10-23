@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './style.module.css';
 import { joblist } from '../../Utils/constants';
 import { getAllJobs } from '../../Utils/api';
+import Navbar from '../Navbar';
 
 const Jobs=()=> {
 
@@ -14,6 +15,7 @@ useEffect(async() => {
 },[])  
   return (
     <>
+    <Navbar/>
     <div className={styles.bg}>
     {
       jobarray.map((item) => {

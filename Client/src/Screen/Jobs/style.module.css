@@ -1,6 +1,6 @@
 .jobContainer{
     width: 25%;
-    font-family: "Spartan", sans-serif; 
+    font-family: 'Poppins', sans-serif;
   background-color: #fff;
 
   display: inline-block;
@@ -16,6 +16,7 @@
 }
 .bg{
     background-color: aliceblue;
+    padding:40px;
 }
 .card{
     background-image: linear-gradient(to right top, #16b5c7, #1bc6d4, #26d8e0, #34eaea, #44fcf4);

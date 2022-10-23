@@ -80,3 +80,26 @@
     let data = await response.json();
     return data;
   }
+  export const getAllBookmarks = async () => {
+
+    const GET_BOOKMARK_JOB = "http://localhost:8000/jobs/bookmark";
+   
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var raw = JSON.stringify({
+      "email": "anupampanwar12@gmail.com"
+    });
+    
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+    let response = await fetch(GET_BOOKMARK_JOB, requestOptions);
+    console.log(response);
+    let data = await response.json();
+    console.log(data);
+    return data;
+    
+  }

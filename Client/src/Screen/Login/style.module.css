@@ -2,6 +2,7 @@
     height: 100vh;
     display: grid;
     grid-template-columns: 1.3fr 1fr;
+    font-family: 'Poppins', sans-serif;
 }
 .rightpane{
     background: url("../../assets/bgsu.jpg");
