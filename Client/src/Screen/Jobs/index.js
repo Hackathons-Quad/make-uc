@@ -3,10 +3,25 @@ import styles from './style.module.css';
 import { joblist } from '../../Utils/constants';
 import { getAllJobs } from '../../Utils/api';
 import Navbar from '../Navbar';
+import { postJobToWishList } from '../../Utils/api';
+import { notify } from '../../Utils/function';
 
 const Jobs=()=> {
 
-const [jobarray,setjobarray] = useState([])  
+const [jobarray,setjobarray] = useState([]) 
+let role = JSON.parse(sessionStorage.getItem("role"))
+
+const AddJobsToWishlist = async (jobId) => {
+  console.log("jobId",jobId)
+ let response = await postJobToWishList(jobId)
+ console.log("response123",response.msg)
+ if(response.msg === "All ready wishlisted"){
+  notify("Successfully Added!", "success")
+}
+else{
+  notify("Not Able to Add!", "error")
+}
+} 
 
 useEffect(async() => {
   const joblistArray = await getAllJobs()
@@ -31,9 +46,9 @@ useEffect(async() => {
         <span>&nbsp;•&nbsp;</span>
         <span className={styles.stipend}>{item.stipend}k</span>
         </div>
-        <button className={styles.list}>Add</button>
-        
-        
+        {role === "Temp" && 
+            <button className={styles.list} onClick= {() => {AddJobsToWishlist(item.jobId)}}>Add</button>
+        }
         </div>
       })
     }

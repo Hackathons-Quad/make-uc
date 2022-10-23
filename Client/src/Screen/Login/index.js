@@ -32,12 +32,15 @@ const Login = () => {
         event.preventDefault();
         if (!Object.keys(errors).length) {
             const result= await postLogindata(data)
-            console.log("result",result)
-            if(result.isAuthenticated === true){
+            if(result.msg === "Success"){
             notify("You Logged in successfuly!", "success")
             sessionStorage.setItem(
                 "email",
                 JSON.stringify(result.email)
+              );
+              sessionStorage.setItem(
+                "role",
+                JSON.stringify(result.role)
               );
             navigate("/jobs")
             }

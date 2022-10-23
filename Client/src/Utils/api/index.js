@@ -82,18 +82,16 @@
   }
   export const getAllBookmarks = async () => {
 
-    const GET_BOOKMARK_JOB = "http://localhost:8000/jobs/bookmark";
+    let email = JSON.parse(sessionStorage.getItem("email"))
+
+    const GET_BOOKMARK_JOB = `http://localhost:8000/jobs/bookmark/${email}`;
    
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    var raw = JSON.stringify({
-      "email": "anupampanwar12@gmail.com"
-    });
     
     var requestOptions = {
       method: 'GET',
       headers: myHeaders,
-      body: raw,
       redirect: 'follow'
     };
     let response = await fetch(GET_BOOKMARK_JOB, requestOptions);
@@ -102,4 +100,48 @@
     console.log(data);
     return data;
     
+  }
+
+  export const delteJob = async (itemid) => {
+    let email = JSON.parse(sessionStorage.getItem("email"))
+    const POST_DELETE_DATA = "http://localhost:8000/jobs/bookmark";
+   
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    let raw = { 
+      "jobId" : itemid,
+      "email" : email,
+   }
+    var requestOptions = {
+      method: "PUT",
+      headers: myHeaders,
+      body: JSON.stringify(raw),
+      redirect: "follow",
+    };
+  
+    let response = await fetch(POST_DELETE_DATA, requestOptions);
+    let data = await response.json();
+    return data;
+  }
+  export const postJobToWishList = async (itemId) => {
+    const POST_ADDTOBOOKMARK_DATA = "http://localhost:8000/jobs/bookmark";
+    let email = JSON.parse(sessionStorage.getItem("email"))
+   
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    let raw = {
+      "email" : email,
+      "jobId" : itemId
+    }
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: JSON.stringify(raw),
+      redirect: "follow",
+    };
+  
+    let response = await fetch(POST_ADDTOBOOKMARK_DATA, requestOptions);
+    let data = await response.json();
+    return data;
   }
