@@ -70,9 +70,10 @@ route.post("/bookmark", async (req, res) => {
 });
 
 // To get job wishlist
-route.get("/bookmark", async (req, res) => {
+route.get("/bookmark/:email", async (req, res) => {
     try {
-        email = req.body.email;
+        email = req.params.email;
+        console.log(email);
         const allBookmarks = await bookmarks.find({email : email});
         res.json(allBookmarks);
       } catch (err) {
