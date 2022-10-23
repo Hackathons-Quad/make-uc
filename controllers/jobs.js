@@ -3,19 +3,18 @@ const route = express.Router();
 const users = require("../models/userschema");
 const jobs = require("../models/jobschema");
 const bookmarks = require("../models/bookmarkschema");
-var jid=1;
+var jid = 1;
 // To add job
 route.post("/add", async (req, res) => {
-
   try {
-    const newJob=new jobs({
-      jobId:jid,
-      jobDescription:req.body.jobTitle,
-      email:req.body.email,
-      stipend:req.body.stipend,
-      duration:req.body.duration,
-      location:req.body.location
-    })
+    const newJob = new jobs({
+      jobId: jid,
+      jobDescription: req.body.jobTitle,
+      email: req.body.email,
+      stipend: req.body.stipend,
+      duration: req.body.duration,
+      location: req.body.location,
+    });
     jid++;
     newJob.save();
     res.json({ msg: "Added job successfully!" });
@@ -26,12 +25,12 @@ route.post("/add", async (req, res) => {
 
 // To get all jobs
 route.get("/", async (req, res) => {
-    try {
-        const notes1 = await jobs.find({});
-        res.json(notes1);
-      } catch (err) {
-        res.json({msg: "Error getting jobs"})
-      }
+  try {
+    const notes1 = await jobs.find({});
+    res.json(notes1);
+  } catch (err) {
+    res.json({ msg: "Error getting jobs" });
+  }
 });
 
 // To delete a job from the database
@@ -49,50 +48,53 @@ route.put("/delete", async (req, res) => {
   }
 });
 
-
 // To add job to the wishlist
 route.post("/bookmark", async (req, res) => {
-    try {
-        mail = req.body.email;
-        jobid = req.body.jobId;
-        const newBookmark= new bookmarks({
-            email: mail,
-            jobId: jobid
-          }) ;
-          const bookmark = await bookmarks.find({ jobId: jobid, email : mail });
-          if(bookmark.length >= 1)
-             res.json({msg: "All ready wishlisted"});
-          newBookmark.save();
-          res.json({msg: "Successfully added jobs in wishlist"});
-      } catch (err) {
-        res.json({msg: "Error getting jobs"});
-      }
+  try {
+    mail = req.body.email;
+    jobid = req.body.jobId;
+    const newBookmark = new bookmarks({
+      email: mail,
+      jobId: jobid,
+    });
+    const bookmark = await bookmarks.find({ jobId: jobid, email: mail });
+    if (bookmark.length >= 1) res.json({ msg: "All ready wishlisted" });
+    newBookmark.save();
+    res.json({ msg: "Successfully added jobs in wishlist" });
+  } catch (err) {
+    res.json({ msg: "Error getting jobs" });
+  }
 });
 
 // To get job wishlist
 route.get("/bookmark/:email", async (req, res) => {
-    try {
-        email = req.params.email;
-        console.log(email);
-        const allBookmarks = await bookmarks.find({email : email});
-        res.json(allBookmarks);
-      } catch (err) {
-        res.json({msg: "Error getting bookmarks"});
-      }
+  try {
+    email = req.params.email;
+    let allBookmarks = await bookmarks.find({ email: email });
+    JOB = [];
+    allBookmarks.forEach((item) => {
+      JOB.push(item.jobId);
+    });
+    console.log(JOB);
+    jobTOSend = await jobs.find({ jobId: { $in: JOB } });
+    res.json(jobTOSend);
+  } catch (err) {
+    res.json({ msg: "Error getting bookmarks" });
+  }
 });
 
 // To delete job from wishlist
 route.put("/bookmark", async (req, res) => {
-    try {
-        mail = req.body.email;
-        jobid = req.body.jobId;
-        const bookmark = await bookmarks.find({ jobId: jobid, email : mail });
-        console.log(bookmark);
-        bookmark[0].remove();
-        res.json({msg: "Successfully deleted job from wishlist"});
-      } catch (err) {
-        res.json({msg: "Error deleting job from bookmark list"});
-      }
+  try {
+    mail = req.body.email;
+    jobid = req.body.jobId;
+    const bookmark = await bookmarks.find({ jobId: jobid, email: mail });
+    console.log(bookmark);
+    bookmark[0].remove();
+    res.json({ msg: "Successfully deleted job from wishlist" });
+  } catch (err) {
+    res.json({ msg: "Error deleting job from bookmark list" });
+  }
 });
 
 module.exports = route;
