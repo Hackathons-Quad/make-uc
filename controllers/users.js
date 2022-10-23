@@ -27,6 +27,21 @@ route.post("/register", async (req, res) => {
 });
 
 // To validate the user
+// route.get("/validate/:email", async (req, res) => {
+//   mail = req.params.email;
+
+
+//   try {
+//     const user1 = await users.updateOne(
+//       { email: mail },
+//       { $set: { isAuthenticated: true } }
+//     );
+//     res.send("user authenticated");
+//   } catch (err) {
+//     res.send("Error occured while authenticating the user");
+//   }
+// });
+
 route.get("/validate/:email", async (req, res) => {
   mail = req.params.email;
 
@@ -42,6 +57,8 @@ route.get("/validate/:email", async (req, res) => {
   }
 });
 
+
+
 // To login in the user into our system
 route.post("/login", async (req, res) => {
   mail = req.body.email;
@@ -52,7 +69,13 @@ route.post("/login", async (req, res) => {
     if (user1.length === 0) {
       res.send("Invalid User");
     } else {
-      if (password == user1[0].password) res.json(user1[0]);
+      if (password == user1[0].password) {
+      res.json(user1[0]);
+      const user1 = await users.updateOne(
+        { email: mail },
+        { $set: { isAuthenticated: true } }
+      );
+      }
       else res.send("Invalid User");
     }
   } catch (err) {
