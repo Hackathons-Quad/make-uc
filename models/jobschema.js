@@ -3,7 +3,7 @@ const { use } = require('../controllers/jobs', '../controllers/users');
 
 const jobsSchema = new mongoose.Schema({
     jobId: {
-        type: Number,
+        type: String,
         required: true,
         unique:true
     },
