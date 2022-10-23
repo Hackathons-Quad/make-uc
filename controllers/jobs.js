@@ -53,10 +53,15 @@ route.put("/delete", async (req, res) => {
 // To add job to the wishlist
 route.post("/bookmark", async (req, res) => {
     try {
+        mail = req.body.email;
+        jobid = req.body.jobId;
         const newBookmark= new bookmarks({
-            email: req.body.email,
-            jobId: req.body.jobId
+            email: mail,
+            jobId: jobid
           }) ;
+          const bookmark = await bookmarks.find({ jobId: jobid, email : mail });
+          if(bookmark.length >= 1)
+             res.json({msg: "All ready wishlisted"});
           newBookmark.save();
           res.json({msg: "Successfully added jobs in wishlist"});
       } catch (err) {

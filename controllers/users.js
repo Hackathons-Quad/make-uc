@@ -15,7 +15,6 @@ route.post("/register", async (req, res) => {
     }) ;
     let email=req.body.email;
     const user1 = await users.find({ email: email });
-    console.log(user1);
     if (user1.length === 0) {
       newUser.save();
       res.json({msg: "User registered Successfully "})
@@ -46,12 +45,11 @@ route.post("/login", async (req, res) => {
   password = req.body.password;
   try {
     const user1 = await users.find({ email: mail });
-    console.log(user1);
     if (user1.length === 0) {
       res.send("Invalid User");
     } else {
       if (password == user1[0].password) res.json(user1[0]);
-      else res.send("Invalid User");
+      else res.send("Pls enter correct Password");
     }
   } catch (err) {
     console.log(err);
