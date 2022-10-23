@@ -5,6 +5,7 @@ import Otp from "./Screen/OTP";
 import "./index.css"
 import Login from "./Screen/Login";
 import Jobs from "./Screen/Jobs";
+import SavedList from "./Screen/SavedList";
 
 import JobCreation from "./Screen/JobCreation";
 
@@ -18,7 +19,11 @@ function App() {
     <Route exact path="/login" element={<Login></Login>}></Route>
     <Route exact path="/jobs" element={<Jobs></Jobs>}></Route>
 
+    
+    <Route exact path="/savedlist" element={<SavedList/>}></Route>
+
     <Route exact path="/createnewjob" element={<JobCreation></JobCreation>}></Route>
+
 
      </Routes>
   
